@@ -1,0 +1,15 @@
+.movie {
+    margin: 0.5rem;
+}
+
+.movie img {
+    width: 220px;
+    height: 300px;
+
+}
+
+h3 {
+    max-width: 220px;
+    font-size: 13px;
+    color: white;
+}

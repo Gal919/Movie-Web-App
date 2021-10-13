@@ -18,8 +18,8 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo">
-            TRVL
-            <i class="fab fa-typo3" />
+            Movie App
+            <i className="fas fa-popcorn"></i>
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -27,11 +27,13 @@ function Navbar() {
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item" onClick={closeMenu}>
               <Link to="/" className="nav-links">
+                <i className="fas fa-home"></i>
                 Home
               </Link>
             </li>
             <li className="nav-item" onClick={closeMenu}>
               <Link to="/favorites" className="nav-links">
+                <i className="fas fa-heart"></i>
                 Favorites
               </Link>
             </li>

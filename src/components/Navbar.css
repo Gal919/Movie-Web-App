@@ -1,5 +1,5 @@
 .navbar {
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  background: #131415;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@
   align-items: center;
 }
 
-.fa-typo3 {
+.fa-popcorn {
   margin-left: 0.5rem;
   font-size: 1.8rem;
 }
@@ -65,6 +65,16 @@
 
 .fa-bars {
   color: #fff;
+}
+
+.fa-home {
+  margin-right: 0.3rem;
+  font-size: 1rem;
+}
+
+.fa-heart {
+  margin-right: 0.3rem;
+  font-size: 1rem;
 }
 
 .menu-icon {

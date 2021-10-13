@@ -5,6 +5,15 @@
     font-family: 'PT Sans', sans-serif;
   }
 
+  .home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #232425;
+  }
+
+
+
   
 
 
