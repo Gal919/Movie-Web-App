@@ -1,8 +1,14 @@
 .movie {
-    margin: 0.5rem;
+    margin: 1rem;
+    border: 1px solid transparent;
+    cursor: pointer;
 }
 
-.movie img {
+.movie:hover {
+    border-bottom: 1px solid #dedede;
+}
+
+img {
     width: 220px;
     height: 300px;
 
@@ -13,3 +19,5 @@ h3 {
     font-size: 13px;
     color: white;
 }
+
+
