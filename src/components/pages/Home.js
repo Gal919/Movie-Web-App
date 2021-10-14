@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../../App.css';
 import axios from "axios";
 import MovieCard from "../MovieCard"
-import MovieInfo from "../MovieInfo";
+import { useHistory } from "react-router-dom";
 
 
 function Home() {
@@ -15,15 +15,18 @@ function Home() {
      useEffect(() => {
         axios.get(url).then(res => {
             setMovies(res.data.Search);
+            console.log(res.data.Search)
         }).catch(err => {
             console.log(err)
         } )  
     },[]); 
 
+    var history = useHistory();
 
     return (
       <div className="home">
-        {movieId && <MovieInfo id={movieId} />}
+        {movieId && history.push("/movieInfo", { id: movieId })}
+
         {movies.map((movie, index) => (
           <MovieCard key={index} data={movie} onSetId={setMovieId} />
         ))}

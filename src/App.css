@@ -13,6 +13,12 @@
     padding: 0 70px;
   
   }
+  
+  .movieInfo {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #232425;
+  }
 
 
 
