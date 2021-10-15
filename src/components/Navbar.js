@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import "./Navbar.css";
 import { Link } from "react-router-dom";
+import "../styles/Navbar.css";
 
-function Navbar() {
+
+const Navbar = () => {
+
   const [click, setClick] = useState(false);
 
   function handleClick() {
@@ -10,7 +12,7 @@ function Navbar() {
   }
 
   function closeMenu() {
-      setClick(false)
+    setClick(false);
   }
 
   return (

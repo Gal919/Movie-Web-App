@@ -1,0 +1,22 @@
+.searchContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #232425;
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+}
+
+.searchBox {
+   background-color: transparent;
+   border: 2px solid white;
+   border-radius: 50px;
+   font-size: 1rem;
+   padding: 5px 20px;
+   color: white;
+}
+
+.searchBox:focus {
+    outline: 0;
+}

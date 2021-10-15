@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import "../styles/MovieInfo.css"; 
 
-import "./MovieInfo.css"; 
-
-function MovieInfo(props) {
-
-    const location = useLocation();
-    const id = location.state.id;
-   
-
-    const url = `http://www.omdbapi.com/?i=${id}&apikey=a165f90d`;
-
+const MovieInfo = () => {
 
     const [movieInfo, setMovieInfo] = useState();
-    const movieId = id;
+    const {state : {id}} = useLocation();
  
-    useEffect(() => {
-            axios.get(url).then(res => {
-            setMovieInfo(res.data);
-            console.log(res.data)
-        }).catch(err => {
-            console.log(err)
-        } )  
-    },[movieId]); 
+    useEffect( () => {
+      const func = async () => {
+        try {
+          const { data } = await axios.get(
+            `http://www.omdbapi.com/?i=${id}&apikey=a165f90d`
+          );
+          setMovieInfo(data);
+        } catch (error) {
+          console.log(error?.message);
+        }
+      };
+      func()
+    },[id]); 
 
 
     return (
