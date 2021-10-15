@@ -4,6 +4,7 @@ import useDebounce from "../../useDebounce";
 import axios from "axios";
 import MovieCard from "../MovieCard";
 import SearchBar from "../SearchBar";
+import movie from "../../images/movie.png"
 
 const Home = () => {
   const history = useHistory();
@@ -17,7 +18,12 @@ const Home = () => {
         `http://www.omdbapi.com/?s=${searchValue}&apikey=a165f90d`
       );
 
-      searchValue && setMovies(Search);
+      if (searchValue === undefined){
+        setMovies([])
+      }
+      else {
+        setMovies(Search)
+      }
   
     } catch (error) {
       console.log(error?.message);
@@ -29,11 +35,16 @@ const Home = () => {
   return (
     <div className="home">
       <SearchBar setSearchValue={setSearchValue} />
+
       {movieId && history.push("/movieInfo", { id: movieId })}
       {movies &&
         movies.map((movie, index) => (
           <MovieCard key={index} data={movie} onSetId={setMovieId} />
         ))}
+
+      <div className="imageContainer">
+        <img className="backgroundImage" src={movie} alt="cinemaImage" />
+      </div>
     </div>
   );
 };

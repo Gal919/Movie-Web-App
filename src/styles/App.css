@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   .home {
@@ -11,13 +11,24 @@
     justify-content: center;
     background-color: #232425;
     padding: 0 70px;
+
   }
-  
-  .movieInfo {
+
+  .imageContainer {
     display: flex;
-    flex-wrap: wrap;
-    background-color: #232425;
+    width: 100%;
+    align-content: flex-end;
+    justify-content: center;
   }
+ 
+
+  .backgroundImage {
+    margin-top: 100px;
+    width: 300px;
+    height: 300px;
+  }
+
+ 
 
 
 

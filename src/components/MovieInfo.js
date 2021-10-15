@@ -24,39 +24,39 @@ const MovieInfo = () => {
 
 
     return (
-      <div className="movieInfo">
+      <div>
         {movieInfo && (
           <div className="container">
             <img className="image" src={movieInfo.Poster} alt="movieImage" />
             <div className="info">
               <h2 className="title">{movieInfo.Title}</h2>
-              <h5>
+              <p>
                 IMDB Rating: <span>{movieInfo.imdbRating}</span>
-              </h5>
-              <h5>
+              </p>
+              <p>
                 Year: <span>{movieInfo.Year}</span>
-              </h5>
-              <h5>
+              </p>
+              <p>
                 Language: <span>{movieInfo.Language}</span>
-              </h5>
-              <h5>
+              </p>
+              <p>
                 Released: <span>{movieInfo.Released}</span>
-              </h5>
-              <h5>
+              </p>
+              <p>
                 Runtime: <span>{movieInfo.Runtime}</span>
-              </h5>
-              <h5>
+              </p>
+              <p>
                 Genre: <span>{movieInfo.Genre}</span>
-              </h5>
-              <h5>
+              </p>
+              <p>
                 Director: <span>{movieInfo.Director}</span>
-              </h5>
-              <h5>
+              </p>
+              <p>
                 Actors: <span>{movieInfo.Actors}</span>
-              </h5>
-              <h5>
+              </p>
+              <p>
                 Plot: <span>{movieInfo.Plot}</span>
-              </h5>
+              </p>
             </div>
           </div>
         )}

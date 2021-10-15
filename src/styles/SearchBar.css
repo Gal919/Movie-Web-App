@@ -3,17 +3,17 @@
     display: flex;
     justify-content: center;
     background-color: #232425;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 30px;
 
 }
 
 .searchBox {
    background-color: transparent;
-   border: 2px solid white;
+   border: 1.5px solid white;
    border-radius: 50px;
    font-size: 1rem;
-   padding: 5px 20px;
+   padding: 10px 30px;
    color: white;
 }
 
