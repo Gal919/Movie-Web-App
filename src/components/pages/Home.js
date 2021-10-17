@@ -1,45 +1,53 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import useDebounce from "../../useDebounce";
 import axios from "axios";
 import MovieCard from "../MovieCard";
 import SearchBar from "../SearchBar";
 import movie from "../../images/movie.png"
+import { useFavorites } from '../../context/FavoritesContext';
 
 const Home = () => {
+
   const history = useHistory();
+  const {favoriteMovies, setFavoriteMovies} = useFavorites();
+
   const [movies, setMovies] = useState([]);
   const [movieId, setMovieId] = useState();
-  const [searchValue, setSearchValue] = useState();
+  const [searchValue, setSearchValue] = useState(); 
 
-  const func = useCallback(async () => {
+  const getMovies = useCallback(async () => {
     try {
-      const { data: {Search} } = await axios.get(
+      const {
+        data: { Search },
+      } = await axios.get(
         `http://www.omdbapi.com/?s=${searchValue}&apikey=a165f90d`
       );
 
-      if (searchValue === undefined){
-        setMovies([])
+      if (searchValue === undefined) {
+        setMovies([]);
+      } else {
+        setMovies(Search);
       }
-      else {
-        setMovies(Search)
-      }
-  
     } catch (error) {
       console.log(error?.message);
     }
-  },[searchValue]) 
+  }, [searchValue]); 
 
-  useDebounce(searchValue, 500, func);
+  useDebounce(searchValue, 500, getMovies);
+
+  const addMovieToFavorites = useCallback((movie) => {
+    setFavoriteMovies([...favoriteMovies, movie]);
+    localStorage.setItem("favorites", JSON.stringify(favoriteMovies));
+  },[favoriteMovies, setFavoriteMovies])
 
   return (
     <div className="home">
       <SearchBar setSearchValue={setSearchValue} />
-
       {movieId && history.push("/movieInfo", { id: movieId })}
-      {movies &&
+      {movies?.length > 0 &&
         movies.map((movie, index) => (
-          <MovieCard key={index} data={movie} onSetId={setMovieId} />
+          <MovieCard key={index} data={movie} onSetId={setMovieId} onSetFavorites={addMovieToFavorites} />
         ))}
 
       <div className="imageContainer">

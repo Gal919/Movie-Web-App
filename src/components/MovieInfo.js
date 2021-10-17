@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
+import useDebounce from "../useDebounce";
 import axios from "axios";
 import "../styles/MovieInfo.css"; 
 
@@ -8,26 +9,25 @@ const MovieInfo = () => {
     const [movieInfo, setMovieInfo] = useState();
     const {state : {id}} = useLocation();
  
-    useEffect( () => {
-      const func = async () => {
-        try {
-          const { data } = await axios.get(
-            `http://www.omdbapi.com/?i=${id}&apikey=a165f90d`
-          );
-          setMovieInfo(data);
-        } catch (error) {
-          console.log(error?.message);
-        }
-      };
-      func()
-    },[id]); 
+    const getMovieInfo = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://www.omdbapi.com/?i=${id}&apikey=a165f90d`
+        );
+        setMovieInfo(data);
+      } catch (error) {
+        console.log(error?.message);
+      }
+    };
+
+    useDebounce(movieInfo, 0, getMovieInfo);
 
 
     return (
       <div>
         {movieInfo && (
           <div className="container">
-            <img className="image" src={movieInfo.Poster} alt="movieImage" />
+            <img className="imageInfo" src={movieInfo.Poster} alt="movieImage" />
             <div className="info">
               <h2 className="title">{movieInfo.Title}</h2>
               <p>
