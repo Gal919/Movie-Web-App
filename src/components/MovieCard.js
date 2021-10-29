@@ -1,22 +1,23 @@
 import React from 'react'
 import "../styles/MovieCard.css"
+import { useHistory } from "react-router-dom";
+import noImage from "../images/noImage.png"
 
-const MovieCard = ({ data: { Title, Poster, imdbID }, onSetId, onSetFavorites }) => {
+const MovieCard = ({ data: { Title, Poster, imdbID }}) => {
   
+  const history = useHistory();
+
   return (
     <div className="movie">
       <div className="poster">
         <img className="image"
           onClick={() => {
-            onSetId(imdbID);
+            history.push("/movieInfo", { id: imdbID })
           }}
-          src={Poster}
+          src={Poster !== "N/A" ? Poster : noImage}
           alt="movie"
         />
-      </div>
-      <div className="titleBox">
         <h3 className="movieTitle">{Title}</h3>
-        <i onClick={() => onSetFavorites({Title, Poster, imdbID})} id="heart" className="fal fa-heart"></i>
       </div>
     </div>
   );

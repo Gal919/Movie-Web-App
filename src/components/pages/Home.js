@@ -1,19 +1,19 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useCallback } from "react";
 import useDebounce from "../../useDebounce";
 import axios from "axios";
 import MovieCard from "../MovieCard";
 import SearchBar from "../SearchBar";
 import movie from "../../images/movie.png"
 import { useFavorites } from '../../context/FavoritesContext';
+import AddToFavorites from "../AddToFavorites";
+import RemoveFromFavorites from "../RemoveFromFavorites";
+
 
 const Home = () => {
 
-  const history = useHistory();
   const {favoriteMovies, setFavoriteMovies} = useFavorites();
 
   const [movies, setMovies] = useState([]);
-  const [movieId, setMovieId] = useState();
   const [searchValue, setSearchValue] = useState(); 
 
   const getMovies = useCallback(async () => {
@@ -24,11 +24,8 @@ const Home = () => {
         `http://www.omdbapi.com/?s=${searchValue}&apikey=a165f90d`
       );
 
-      if (searchValue === undefined) {
-        setMovies([]);
-      } else {
-        setMovies(Search);
-      }
+      searchValue === undefined ? setMovies([]) : setMovies(Search)
+      
     } catch (error) {
       console.log(error?.message);
     }
@@ -36,20 +33,53 @@ const Home = () => {
 
   useDebounce(searchValue, 500, getMovies);
 
-  const addMovieToFavorites = useCallback((movie) => {
+   const addMovieToFavorites = useCallback((movie) => {
     setFavoriteMovies([...favoriteMovies, movie]);
-    localStorage.setItem("favorites", JSON.stringify(favoriteMovies));
-  },[favoriteMovies, setFavoriteMovies])
+  },[favoriteMovies, setFavoriteMovies]) 
 
+   const removeMovieFromFavorites = useCallback((movie) => {
+      setFavoriteMovies(favoriteMovies.filter(
+       (favourite) => favourite.imdbID !== movie.imdbID
+     ))
+     },[favoriteMovies, setFavoriteMovies]) 
+
+ /*     function isFavorite (favorite, movie) {
+       if (favorite.imdbID === movie.imdbID)
+         return (
+           <AddToFavorites
+             onAddMovie={addMovieToFavorites}
+             data={movie}
+             key={movie.imdbID}
+           />
+         );
+         else return (
+          <RemoveFromFavorites onRemoveMovie={removeMovieFromFavorites}
+          data={movie}
+          key={movie.imdbID}/> 
+         );
+     } */
+
+     
+     let disabled;
+
+ 
   return (
     <div className="home">
+      {console.log(favoriteMovies)}
       <SearchBar setSearchValue={setSearchValue} />
-      {movieId && history.push("/movieInfo", { id: movieId })}
       {movies?.length > 0 &&
         movies.map((movie, index) => (
-          <MovieCard key={index} data={movie} onSetId={setMovieId} onSetFavorites={addMovieToFavorites} />
+          <div>
+            <MovieCard key={index} data={movie} />
+            {favoriteMovies.find((favorite) => favorite.imdbID === movie.imdbID) ? disabled = true : disabled = false}
+            <AddToFavorites
+              onAddMovie={addMovieToFavorites}
+              data={movie}
+              disabled={disabled}
+              key={movie.imdbID}
+            />
+          </div>
         ))}
-
       <div className="imageContainer">
         <img className="backgroundImage" src={movie} alt="cinemaImage" />
       </div>

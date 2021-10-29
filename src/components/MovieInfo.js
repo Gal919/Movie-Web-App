@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import useDebounce from "../useDebounce";
 import axios from "axios";
 import "../styles/MovieInfo.css"; 
+import noImage from "../images/noImage.png"
 
 const MovieInfo = () => {
 
@@ -22,40 +23,39 @@ const MovieInfo = () => {
 
     useDebounce(movieInfo, 0, getMovieInfo);
 
-
     return (
       <div>
         {movieInfo && (
           <div className="container">
-            <img className="imageInfo" src={movieInfo.Poster} alt="movieImage" />
+            <img className="imageInfo" src={movieInfo.Poster !== "N/A"? movieInfo.Poster : noImage} alt="movieImage" />
             <div className="info">
-              <h2 className="title">{movieInfo.Title}</h2>
+              <h2 className="title">{movieInfo.Title !== "N/A" ? movieInfo.Title : "-"}</h2>
               <p>
-                IMDB Rating: <span>{movieInfo.imdbRating}</span>
+                IMDB Rating: <span>{movieInfo.imdbRating !== "N/A" ? movieInfo.imdbRating : "-"}</span>
               </p>
               <p>
-                Year: <span>{movieInfo.Year}</span>
+                Year: <span>{movieInfo.Year !== "N/A" ? movieInfo.Year : "-"}</span>
               </p>
               <p>
-                Language: <span>{movieInfo.Language}</span>
+                Language: <span>{movieInfo.Language !== "N/A" ? movieInfo.Language : "-"}</span>
               </p>
               <p>
-                Released: <span>{movieInfo.Released}</span>
+                Released: <span>{movieInfo.Released !== "N/A" ? movieInfo.Released : "-"}</span>
               </p>
               <p>
-                Runtime: <span>{movieInfo.Runtime}</span>
+                Runtime: <span>{movieInfo.Runtime !== "N/A" ? movieInfo.Runtime : "-"}</span>
               </p>
               <p>
-                Genre: <span>{movieInfo.Genre}</span>
+                Genre: <span>{movieInfo.Genre !== "N/A" ? movieInfo.Genre : "-"}</span>
               </p>
               <p>
-                Director: <span>{movieInfo.Director}</span>
+                Director: <span>{movieInfo.Director !== "N/A" ? movieInfo.Director : "-"}</span>
               </p>
               <p>
-                Actors: <span>{movieInfo.Actors}</span>
+                Actors: <span>{movieInfo.Actors !== "N/A" ? movieInfo.Actors : "-"}</span>
               </p>
               <p>
-                Plot: <span>{movieInfo.Plot}</span>
+                Plot: <span>{movieInfo.Plot !== "N/A" ? movieInfo.Plot : "-"}</span>
               </p>
             </div>
           </div>

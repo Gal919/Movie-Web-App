@@ -1,0 +1,47 @@
+.addToFavoritesContainer {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0.5rem;
+}
+
+
+.button-abled {
+    display: flex;
+    font-size: 14px;
+    color: #E99543;
+    cursor: pointer;
+    background: #232425;
+    border: none;
+    margin: 5px 0px 0px 6px; 
+}
+
+.button-abled:hover {
+    font-weight: bold;
+}
+
+.button-disabled {
+    display: flex;
+    font-size: 14px;
+    color: #E99543;
+    opacity: 0.3;  
+    background: #232425;
+    border: none;
+    margin: 5px 0px 0px 6px;  
+}
+
+.button-abled #heart {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #E99543;
+    margin-left: 5px;
+}
+
+.button-disabled #heart {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #E99543;
+    margin-left: 5px;
+    opacity: 0.3;  
+}
