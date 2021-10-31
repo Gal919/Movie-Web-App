@@ -1,6 +1,8 @@
 import "../styles/SearchBar.css"; 
 
+
 const SearchBar = ({ setSearchValue }) => {
+
   return (
     <div className="searchContainer">
       <input

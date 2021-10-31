@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import useDebounce from "../../useDebounce";
 import axios from "axios";
 import MovieCard from "../MovieCard";
@@ -6,15 +6,14 @@ import SearchBar from "../SearchBar";
 import movie from "../../images/movie.png"
 import { useFavorites } from '../../context/FavoritesContext';
 import AddToFavorites from "../AddToFavorites";
-import RemoveFromFavorites from "../RemoveFromFavorites";
-
 
 const Home = () => {
+  
 
   const {favoriteMovies, setFavoriteMovies} = useFavorites();
-
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState(); 
+
 
   const getMovies = useCallback(async () => {
     try {
@@ -24,7 +23,7 @@ const Home = () => {
         `http://www.omdbapi.com/?s=${searchValue}&apikey=a165f90d`
       );
 
-      searchValue === undefined ? setMovies([]) : setMovies(Search)
+      searchValue === undefined ? setMovies([]) : setMovies(Search);
       
     } catch (error) {
       console.log(error?.message);
@@ -37,30 +36,10 @@ const Home = () => {
     setFavoriteMovies([...favoriteMovies, movie]);
   },[favoriteMovies, setFavoriteMovies]) 
 
-   const removeMovieFromFavorites = useCallback((movie) => {
-      setFavoriteMovies(favoriteMovies.filter(
-       (favourite) => favourite.imdbID !== movie.imdbID
-     ))
-     },[favoriteMovies, setFavoriteMovies]) 
-
- /*     function isFavorite (favorite, movie) {
-       if (favorite.imdbID === movie.imdbID)
-         return (
-           <AddToFavorites
-             onAddMovie={addMovieToFavorites}
-             data={movie}
-             key={movie.imdbID}
-           />
-         );
-         else return (
-          <RemoveFromFavorites onRemoveMovie={removeMovieFromFavorites}
-          data={movie}
-          key={movie.imdbID}/> 
-         );
-     } */
-
      
-     let disabled;
+  let disabled;
+
+  
 
  
   return (
@@ -86,5 +65,6 @@ const Home = () => {
     </div>
   );
 };
+
 
 export default Home;
