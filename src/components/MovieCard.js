@@ -12,7 +12,7 @@ const MovieCard = ({ data: { Title, Poster, imdbID }}) => {
       <div className="poster">
         <img className="image"
           onClick={() => {
-            history.push("/movieInfo", { id: imdbID })
+            history.push("/movie-app/movieInfo", { id: imdbID })
           }}
           src={Poster !== "N/A" ? Poster : noImage}
           alt="movie"
