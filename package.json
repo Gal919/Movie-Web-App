@@ -1,7 +1,8 @@
 {
-  "name": "weather-app",
+  "name": "movie-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gal919.github.io/Movie-Web-App/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
