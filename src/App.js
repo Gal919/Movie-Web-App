@@ -16,9 +16,9 @@ const App = () => (
         <Router>
           <Navbar />
           <Switch>
-            <Route path="/movie-app" exact component={Home} />
-            <Route path="/movie-app/favorites" component={Favorites} />
-            <Route path="/movie-app/movieInfo" component={MovieInfo} />
+            <Route path="/" exact component={Home} />
+            <Route path="/favorites" component={Favorites} />
+            <Route path="/movieInfo" component={MovieInfo} />
           </Switch>
         </Router>
       </div>

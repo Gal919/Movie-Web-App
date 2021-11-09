@@ -19,7 +19,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/movie-app" className="navbar-logo">
+          <Link to="/" className="navbar-logo">
             Movie App
             <i className="fas fa-popcorn"></i>
           </Link>
@@ -28,13 +28,13 @@ const Navbar = () => {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item" onClick={closeMenu}>
-              <Link to="/movie-app" className="nav-links">
+              <Link to="/" className="nav-links">
                 <i className="fas fa-home"></i>
                 Home
               </Link>
             </li>
             <li className="nav-item" onClick={closeMenu}>
-              <Link to="/movie-app/favorites" className="nav-links">
+              <Link to="/favorites" className="nav-links">
                 <i className="fas fa-heart"></i>
                 Favorites
               </Link>
