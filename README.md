@@ -3,7 +3,8 @@ Movies info app.
 Alows to search for a movie, see his info and add him to favorites list.
 
 ## About the application
- React app using external api and localStorage.
+ React SPA using external api and localStorage.
+ The app is developed with React hooks, coustom hooks, React Router and using context.
  The app has three main components:
 
 - **Home component:**
@@ -26,6 +27,13 @@ Once the user click on a movie card the movieInfo page will open with the curren
 Display the favorites list that is stored at localStorage. 
 ```
 ![img3](https://user-images.githubusercontent.com/66163118/140982924-e8892f19-96c1-4c75-8151-3a3ed1616e0b.png)
+
+
+```
+The app is fully responsive.
+
+```
+
 
 
 
