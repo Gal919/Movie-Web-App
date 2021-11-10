@@ -31,7 +31,7 @@ Display the favorites list that is stored at localStorage.
 
 ```
 The app is fully responsive.
-
+```
 ![img4](https://user-images.githubusercontent.com/66163118/141091547-38757318-6a18-44df-a72d-62ea43718099.png)
 
 ```
