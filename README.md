@@ -9,7 +9,7 @@ Alows to search for a movie, see his info and add him to favorites list.
 
 - **Home component:**
 ```
-The user fill a form with movie name. Once the player stops typeing for half second an get 
+The user fill a form with the movie name. Once the player stops typeing for half second, an get 
 request sent to the external api using axios library.
 The corresponding movies will be displayed.
 The user can click a movie to see his info and save it to his favorites list.
@@ -18,7 +18,7 @@ The user can click a movie to see his info and save it to his favorites list.
 
 - **MovieInfo component:**
 ```
-Once the user click on a movie card the movieInfo page will open with the current movie id, this id will be sent by get request in order to recive all movie's info.
+Once the user click on a movie card, the movieInfo page will open with the current movie id.This id will be sent by get request in order to recive all movie's info.
 ```
 ![img2](https://user-images.githubusercontent.com/66163118/140931239-7e5527c2-1069-447d-a887-2cfbd5e1c100.png)
 
@@ -31,6 +31,8 @@ Display the favorites list that is stored at localStorage.
 
 ```
 The app is fully responsive.
+
+![img4](https://user-images.githubusercontent.com/66163118/141091547-38757318-6a18-44df-a72d-62ea43718099.png)
 
 ```
 
