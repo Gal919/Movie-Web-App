@@ -1,4 +1,4 @@
-.searchContainer {
+.search-container {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
 
 }
 
-.searchBox {
+.search-box {
    background-color: transparent;
    border: 1.5px solid white;
    border-radius: 50px;
@@ -17,6 +17,6 @@
    color: white;
 }
 
-.searchBox:focus {
+.search-box:focus {
     outline: 0;
 }

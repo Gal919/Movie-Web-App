@@ -1,19 +1,19 @@
 import React from 'react';
-import "../styles/AddToFavorites.css";
+import '../styles/AddToFavorites.css';
 
 const RemoveFromFavorites = ({data:movie, onRemoveMovie}) => {
 
     return (
-      <div className="addToFavoritesContainer">
+      <div className='addtofavorites-container'>
         <button
-          className="button-abled"
+          className='button-abled'
           onClick={() => onRemoveMovie(movie)}
         >
           Remove from Favorites
-          <i id="heart" className="fas fa-trash"></i>
+          <i id='heart' className='fas fa-trash'></i>
         </button>
       </div>
     );
 }
 
-export default RemoveFromFavorites
+export default RemoveFromFavorites;

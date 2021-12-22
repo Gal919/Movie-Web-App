@@ -1,15 +1,15 @@
-import "../styles/SearchBar.css"; 
+import '../styles/SearchBar.css'; 
 
-
-const SearchBar = ({ setSearchValue }) => {
+const SearchBar = ({ setSearchValue, searchValue }) => {
 
   return (
-    <div className="searchContainer">
+    <div className='search-container'>
       <input
         onChange={(event) => setSearchValue(event.target.value)}
-        className="searchBox"
-        type="text"
-        placeholder="Search..."
+        className='search-box'
+        type='text'
+        placeholder='Search...'
+        value={searchValue}
       />
     </div>
   );

@@ -1,11 +1,11 @@
-import React, { useState, useCallback, useEffect } from "react";
-import useDebounce from "../../useDebounce";
-import axios from "axios";
-import MovieCard from "../MovieCard";
-import SearchBar from "../SearchBar";
-import movie from "../../images/movie.png"
+import React, { useState, useCallback } from 'react';
 import { useFavorites } from '../../context/FavoritesContext';
-import AddToFavorites from "../AddToFavorites";
+import useDebounce from '../../useDebounce';
+import axios from 'axios';
+import MovieCard from '../MovieCard';
+import SearchBar from '../SearchBar';
+import AddToFavorites from '../AddToFavorites';
+import movie from '../../images/movie.png';
 
 const Home = () => {
   
@@ -43,13 +43,12 @@ const Home = () => {
 
  
   return (
-    <div className="home">
-      {console.log(favoriteMovies)}
-      <SearchBar setSearchValue={setSearchValue} />
+    <div className='home'>
+      <SearchBar setSearchValue={setSearchValue} searchValue={searchValue} />
       {movies?.length > 0 &&
-        movies.map((movie, index) => (
+        movies.map((movie) => (
           <div>
-            <MovieCard key={index} data={movie} />
+            <MovieCard key={movie.imdbID} data={movie} />
             {favoriteMovies.find((favorite) => favorite.imdbID === movie.imdbID) ? disabled = true : disabled = false}
             <AddToFavorites
               onAddMovie={addMovieToFavorites}
@@ -59,8 +58,8 @@ const Home = () => {
             />
           </div>
         ))}
-      <div className="imageContainer">
-        <img className="backgroundImage" src={movie} alt="cinemaImage" />
+      <div className='image-container'>
+        <img className='backgroung-image' src={movie} alt='movie-poster' />
       </div>
     </div>
   );
