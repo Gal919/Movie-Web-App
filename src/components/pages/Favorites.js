@@ -1,4 +1,4 @@
-import React , {useCallback} from 'react';
+import React from 'react';
 import { useFavorites } from '../../context/FavoritesContext';
 import '../../styles/Favorites.css';
 import MovieCard from '../MovieCard';
@@ -9,11 +9,11 @@ const Favorites = () => {
 
     const {favoriteMovies, setFavoriteMovies} = useFavorites();
   
-    const removeMovieFromFavorites = useCallback((movie) => {
+    const removeMovieFromFavorites = (movie) => {
       setFavoriteMovies(favoriteMovies.filter(
        (favourite) => favourite.imdbID !== movie.imdbID
      ))
-     },[favoriteMovies, setFavoriteMovies]) 
+     } 
 
     return (
       <div className='favorites-container'>
@@ -21,13 +21,12 @@ const Favorites = () => {
           <h1>Favorites</h1>
         </div>
         <div className='movies'>
-          {favoriteMovies.map((movie, index) => (
-            <div>
-              <MovieCard key={movie.index} data={movie} />
+          {favoriteMovies.map((movie) => (
+            <div key={movie.imdbID}>
+              <MovieCard data={movie} />
               <RemoveFromFavorites
                 onRemoveMovie={removeMovieFromFavorites}
                 data={movie}
-                key={movie.imdbID}
               />
             </div>
           ))}

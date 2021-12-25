@@ -9,10 +9,10 @@ import movie from '../../images/movie.png';
 
 const Home = () => {
   
-
-  const {favoriteMovies, setFavoriteMovies} = useFavorites();
+  const {favoriteMovies, setFavoriteMovies} = useFavorites([]);
   const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState(); 
+  const [searchValue, setSearchValue] = useState(''); 
+  let disabled;
 
 
   const getMovies = useCallback(async () => {
@@ -32,29 +32,23 @@ const Home = () => {
 
   useDebounce(searchValue, 500, getMovies);
 
-   const addMovieToFavorites = useCallback((movie) => {
+   const addMovieToFavorites = (movie) => {
     setFavoriteMovies([...favoriteMovies, movie]);
-  },[favoriteMovies, setFavoriteMovies]) 
+  }
 
      
-  let disabled;
-
-  
-
- 
   return (
     <div className='home'>
       <SearchBar setSearchValue={setSearchValue} searchValue={searchValue} />
       {movies?.length > 0 &&
         movies.map((movie) => (
-          <div>
-            <MovieCard key={movie.imdbID} data={movie} />
+          <div key={movie.imdbID}>
+            <MovieCard  data={movie} />
             {favoriteMovies.find((favorite) => favorite.imdbID === movie.imdbID) ? disabled = true : disabled = false}
             <AddToFavorites
               onAddMovie={addMovieToFavorites}
               data={movie}
               disabled={disabled}
-              key={movie.imdbID}
             />
           </div>
         ))}

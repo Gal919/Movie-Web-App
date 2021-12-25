@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import useDebounce from '../useDebounce';
 import axios from 'axios';
 import '../styles/MovieInfo.css'; 
 import noImage from '../images/noImage.png';
@@ -9,19 +8,23 @@ const MovieInfo = () => {
 
     const [movieInfo, setMovieInfo] = useState();
     const {state : {id}} = useLocation();
- 
-    const getMovieInfo = async () => {
-      try {
-        const { data } = await axios.get(
-          `http://www.omdbapi.com/?i=${id}&apikey=a165f90d`
-        );
-        setMovieInfo(data);
-      } catch (error) {
-        console.log(error?.message);
+    
+    useEffect(() => {
+      console.log('movieInfoUpdated')
+      const getMovieInfo = async () => {
+        try {
+          const { data } = await axios.get(
+            `http://www.omdbapi.com/?i=${id}&apikey=a165f90d`
+          );
+          setMovieInfo(data);
+         
+        } catch (error) {
+          console.log(error?.message);
+        }
       }
-    };
+      getMovieInfo();
+    },[id])
 
-    useDebounce(movieInfo, 0, getMovieInfo);
 
     return (
       <div>
