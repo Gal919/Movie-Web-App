@@ -10,7 +10,6 @@ const MovieInfo = () => {
     const {state : {id}} = useLocation();
     
     useEffect(() => {
-      console.log('movieInfoUpdated')
       const getMovieInfo = async () => {
         try {
           const { data } = await axios.get(
