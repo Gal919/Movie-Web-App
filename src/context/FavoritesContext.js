@@ -1,5 +1,4 @@
-import { createContext, useEffect, useContext } from "react";
-import { useState } from "react/cjs/react.development";
+import { React, createContext, useState, useEffect, useContext } from "react";
 
 export const FavoritesContext = createContext();
 
