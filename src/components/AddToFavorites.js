@@ -6,8 +6,7 @@ const AddToFavorites = ({data:movie, onAddMovie, disabled}) => {
     return (
       <div className='addtofavorites-container'>
         <button
-          className= {disabled ? 'button-disabled' : 'button-abled'}
-          disabled={disabled}
+          className='addtofavorites-button'
           onClick={() => onAddMovie(movie)}
         >
           Add to Favorites

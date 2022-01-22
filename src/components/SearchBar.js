@@ -5,7 +5,10 @@ const SearchBar = ({ setSearchValue, searchValue }) => {
   return (
     <div className='search-container'>
       <input
-        onChange={(event) => setSearchValue(event.target.value)}
+        onChange={(event) => {
+          setSearchValue(event.target.value);
+          event.preventDefault();
+          }}
         className='search-box'
         type='text'
         placeholder='Search...'

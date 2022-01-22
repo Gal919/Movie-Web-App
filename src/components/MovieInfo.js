@@ -1,63 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import '../styles/MovieInfo.css'; 
 import noImage from '../images/noImage.png';
+import useFetch from '../useFetch';
 
 const MovieInfo = () => {
 
-    const [movieInfo, setMovieInfo] = useState();
-    const {state : {id}} = useLocation();
-    
-    useEffect(() => {
-      const getMovieInfo = async () => {
-        try {
-          const { data } = await axios.get(
-            `http://www.omdbapi.com/?i=${id}&apikey=a165f90d`
-          );
-          setMovieInfo(data);
-         
-        } catch (error) {
-          console.log(error?.message);
-        }
-      }
-      getMovieInfo();
-    },[id])
+    const {state : { id }} = useLocation();
 
+    const { data } = useFetch(`http://www.omdbapi.com/?i=${id}&apikey=a165f90d`, id);
 
+    const getImage = (value) => {
+      return value !== 'N/A'? value : noImage;
+    }
+
+    const getInfo = (value) => {
+      return value!== 'N/A' ? value : '-';
+    }
+  
     return (
       <div>
-        {movieInfo && (
+        {data && (
           <div className='movieinfo-container'>
-            <img className='image-info' src={movieInfo.Poster !== 'N/A'? movieInfo.Poster : noImage} alt='movieImage' />
+            <img className='image-info' src={getImage(data?.data?.Poster)} alt='moviePoster' />
             <div className='info'>
-              <h2 className='title'>{movieInfo.Title !== 'N/A' ? movieInfo.Title : '-'}</h2>
+              <h2 className='title'>{getInfo(data?.data?.Title)}</h2>
               <p>
-                IMDB Rating: <span>{movieInfo.imdbRating !== 'N/A' ? movieInfo.imdbRating : '-'}</span>
+                IMDB Rating: <span>{getInfo(data?.data?.imdbRating)}</span>
               </p>
               <p>
-                Year: <span>{movieInfo.Year !== 'N/A' ? movieInfo.Year : '-'}</span>
+                Year: <span>{getInfo(data?.data?.Year)}</span>
               </p>
               <p>
-                Language: <span>{movieInfo.Language !== 'N/A' ? movieInfo.Language : '-'}</span>
+                Language: <span>{getInfo(data?.data?.Language)}</span>
               </p>
               <p>
-                Released: <span>{movieInfo.Released !== 'N/A' ? movieInfo.Released : '-'}</span>
+                Released: <span>{getInfo(data?.data?.Released)}</span>
               </p>
               <p>
-                Runtime: <span>{movieInfo.Runtime !== 'N/A' ? movieInfo.Runtime : '-'}</span>
+                Runtime: <span>{getInfo(data?.data?.Runtime)}</span>
               </p>
               <p>
-                Genre: <span>{movieInfo.Genre !== 'N/A' ? movieInfo.Genre : '-'}</span>
+                Genre: <span>{getInfo(data?.data?.Genre)}</span>
               </p>
               <p>
-                Director: <span>{movieInfo.Director !== 'N/A' ? movieInfo.Director : '-'}</span>
+                Director: <span>{getInfo(data?.data?.Director)}</span>
               </p>
               <p>
-                Actors: <span>{movieInfo.Actors !== 'N/A' ? movieInfo.Actors : '-'}</span>
+                Actors: <span>{getInfo(data?.data?.Actors)}</span>
               </p>
               <p>
-                Plot: <span>{movieInfo.Plot !== 'N/A' ? movieInfo.Plot : '-'}</span>
+                Plot: <span>{getInfo(data?.data?.Plot)}</span>
               </p>
             </div>
           </div>

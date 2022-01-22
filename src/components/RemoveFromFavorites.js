@@ -6,7 +6,7 @@ const RemoveFromFavorites = ({data:movie, onRemoveMovie}) => {
     return (
       <div className='addtofavorites-container'>
         <button
-          className='button-abled'
+          className='addtofavorites-button'
           onClick={() => onRemoveMovie(movie)}
         >
           Remove from Favorites

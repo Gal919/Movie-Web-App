@@ -1,55 +1,45 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useFavorites } from '../../context/FavoritesContext';
 import useDebounce from '../../useDebounce';
-import axios from 'axios';
 import MovieCard from '../MovieCard';
 import SearchBar from '../SearchBar';
 import AddToFavorites from '../AddToFavorites';
 import movie from '../../images/movie.png';
+import useFetch from '../../useFetch'
+import RemoveFromFavorites from '../RemoveFromFavorites';
 
 const Home = () => {
   
   const {favoriteMovies, setFavoriteMovies} = useFavorites([]);
-  const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState(''); 
-  let disabled;
 
+  const value = useDebounce(searchValue, 1000);
 
-  const getMovies = useCallback(async () => {
-    try {
-      const {
-        data: { Search },
-      } = await axios.get(
-        `http://www.omdbapi.com/?s=${searchValue}&apikey=a165f90d`
-      );
+  const { data } = useFetch(`http://www.omdbapi.com/?s=${value}&apikey=a165f90d`,value);
 
-      searchValue === undefined ? setMovies([]) : setMovies(Search);
-      
-    } catch (error) {
-      console.log(error?.message);
-    }
-  }, [searchValue]); 
-
-  useDebounce(searchValue, 500, getMovies);
-
-   const addMovieToFavorites = (movie) => {
+  const addMovieToFavorites = (movie) => {
     setFavoriteMovies([...favoriteMovies, movie]);
   }
 
-     
+  const removeMovieFromFavorites = (movie) => {
+    setFavoriteMovies(favoriteMovies.filter(
+     (favourite) => favourite.imdbID !== movie.imdbID
+   ))
+   } 
+ 
   return (
     <div className='home'>
       <SearchBar setSearchValue={setSearchValue} searchValue={searchValue} />
-      {movies?.length > 0 &&
-        movies.map((movie) => (
+      {data?.data?.Search?.length > 0 &&
+        data?.data?.Search?.map((movie) => (
           <div key={movie.imdbID}>
             <MovieCard  data={movie} />
-            {favoriteMovies.find((favorite) => favorite.imdbID === movie.imdbID) ? disabled = true : disabled = false}
-            <AddToFavorites
+            {favoriteMovies.find((favorite) => favorite.imdbID === movie.imdbID) ?  
+            <RemoveFromFavorites onRemoveMovie={removeMovieFromFavorites} data={movie} />: <AddToFavorites
               onAddMovie={addMovieToFavorites}
               data={movie}
-              disabled={disabled}
-            />
+             />}
+            
           </div>
         ))}
       <div className='image-container'>
