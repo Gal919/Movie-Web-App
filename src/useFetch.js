@@ -18,12 +18,12 @@ const useFetch = (url, value) => {
           } catch (error) {
             console.log(error?.message);
           }
-        }
+        };
         getInfo();
-      },[url, value])
+      },[url, value]);
 
       return { data };
 
-}
+};
 
-export default useFetch
+export default useFetch;

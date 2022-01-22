@@ -12,11 +12,11 @@ const MovieInfo = () => {
 
     const getImage = (value) => {
       return value !== 'N/A'? value : noImage;
-    }
+    };
 
     const getInfo = (value) => {
       return value!== 'N/A' ? value : '-';
-    }
+    };
   
     return (
       <div>
@@ -57,6 +57,6 @@ const MovieInfo = () => {
         )}
       </div>
     );
-}
+};
 
-export default MovieInfo
+export default MovieInfo;

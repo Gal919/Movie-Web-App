@@ -5,7 +5,7 @@ import MovieCard from '../MovieCard';
 import SearchBar from '../SearchBar';
 import AddToFavorites from '../AddToFavorites';
 import movie from '../../images/movie.png';
-import useFetch from '../../useFetch'
+import useFetch from '../../useFetch';
 import RemoveFromFavorites from '../RemoveFromFavorites';
 
 const Home = () => {
@@ -19,13 +19,13 @@ const Home = () => {
 
   const addMovieToFavorites = (movie) => {
     setFavoriteMovies([...favoriteMovies, movie]);
-  }
+  };
 
   const removeMovieFromFavorites = (movie) => {
     setFavoriteMovies(favoriteMovies.filter(
      (favourite) => favourite.imdbID !== movie.imdbID
    ))
-   } 
+   };
  
   return (
     <div className='home'>

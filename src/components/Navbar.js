@@ -9,11 +9,11 @@ const Navbar = () => {
 
   function handleClick() {
     setClick(!click);
-  }
+  };
 
   function closeMenu() {
     setClick(false);
-  }
+  };
 
   return (
     <>
@@ -44,6 +44,6 @@ const Navbar = () => {
       </nav>
     </>
   );
-}
+};
 
 export default Navbar;

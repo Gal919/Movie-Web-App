@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 const useDebounce = (value, time) => {
 
@@ -15,12 +15,6 @@ const useDebounce = (value, time) => {
 
     return debouncedValue;
     
-   /*  useEffect( () => {
-        const timer = setTimeout( () => {
-            callback();
-        }, time);
-        return () => clearTimeout(timer)
-    }, [callback, time, value]); */
 };
 
-export default useDebounce
+export default useDebounce;

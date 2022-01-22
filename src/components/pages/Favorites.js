@@ -13,7 +13,7 @@ const Favorites = () => {
       setFavoriteMovies(favoriteMovies.filter(
        (favourite) => favourite.imdbID !== movie.imdbID
      ))
-     } 
+     };
 
     return (
       <div className='favorites-container'>
@@ -36,6 +36,6 @@ const Favorites = () => {
       </div>
       </div>
     );
-}
+};
 
-export default Favorites
+export default Favorites;

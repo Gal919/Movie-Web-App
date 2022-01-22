@@ -18,4 +18,4 @@ const SearchBar = ({ setSearchValue, searchValue }) => {
   );
 };
 
-export default SearchBar
+export default SearchBar;

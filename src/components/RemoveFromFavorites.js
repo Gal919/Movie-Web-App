@@ -14,6 +14,6 @@ const RemoveFromFavorites = ({data:movie, onRemoveMovie}) => {
         </button>
       </div>
     );
-}
+};
 
 export default RemoveFromFavorites;

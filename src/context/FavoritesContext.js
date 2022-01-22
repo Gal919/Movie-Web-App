@@ -14,20 +14,20 @@ export const FavoritesProvider = ({children}) => {
       localStorage.getItem('favorites') 
     );
     setFavoriteMovies(movieFavorites ?? []);
-  },[setFavoriteMovies])
+  },[setFavoriteMovies]);
 
   
   useEffect(() => {
       localStorage.setItem("favorites", JSON.stringify(favoriteMovies)
     );
-  },[favoriteMovies])
+  },[favoriteMovies]);
 
   return <FavoritesContext.Provider value={{favoriteMovies, setFavoriteMovies}}>
     {children}
   </FavoritesContext.Provider>
 
   
-}
+};
 
 export default FavoritesProvider;
 

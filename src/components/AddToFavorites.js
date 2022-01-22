@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/AddToFavorites.css';
 
-const AddToFavorites = ({data:movie, onAddMovie, disabled}) => {
+const AddToFavorites = ({data:movie, onAddMovie}) => {
 
     return (
       <div className='addtofavorites-container'>
@@ -14,6 +14,6 @@ const AddToFavorites = ({data:movie, onAddMovie, disabled}) => {
         </button>
       </div>
     );
-}
+};
 
-export default AddToFavorites
+export default AddToFavorites;
