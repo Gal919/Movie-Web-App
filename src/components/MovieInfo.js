@@ -8,7 +8,7 @@ const MovieInfo = () => {
 
     const {state : { id }} = useLocation();
 
-    const { data } = useFetch(`http://www.omdbapi.com/?i=${id}&apikey=a165f90d`, id);
+    const { data } = useFetch(`https://www.omdbapi.com/?i=${id}&apikey=a165f90d`, id);
 
     const getImage = (value) => {
       return value !== 'N/A'? value : noImage;

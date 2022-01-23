@@ -13,9 +13,9 @@ const Home = () => {
   const {favoriteMovies, setFavoriteMovies} = useFavorites([]);
   const [searchValue, setSearchValue] = useState(''); 
 
-  const value = useDebounce(searchValue, 1000);
+  const value = useDebounce(searchValue, 700);
 
-  const { data } = useFetch(`http://www.omdbapi.com/?s=${value}&apikey=a165f90d`,value);
+  const { data } = useFetch(`https://www.omdbapi.com/?s=${value}&apikey=a165f90d`,value);
 
   const addMovieToFavorites = (movie) => {
     setFavoriteMovies([...favoriteMovies, movie]);

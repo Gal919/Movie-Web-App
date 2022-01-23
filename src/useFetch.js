@@ -6,7 +6,6 @@ const useFetch = (url, value) => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        console.log('useFetchEffect');
         if (value === undefined) return [];
         const getInfo = async () => {
           try {

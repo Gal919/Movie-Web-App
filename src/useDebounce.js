@@ -5,7 +5,6 @@ const useDebounce = (value, time) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
 
      useEffect( () => {
-        console.log('usedebounceEffect');
         const timer = setTimeout(() => {
             setDebouncedValue(value);
         }, time);
