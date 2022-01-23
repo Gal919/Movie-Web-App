@@ -8,11 +8,12 @@ const SearchBar = ({ setSearchValue, searchValue }) => {
       <input
         onChange={(event) => {
           setSearchValue(event.target.value);
+          localStorage.setItem('lastSearch', JSON.stringify(event.target.value));
           event.preventDefault();
           }}
         className='search-box'
         type='text'
-        placeholder='Search...'
+        placeholder='Search for a Movie...'
         value={searchValue}
       />
     </div>

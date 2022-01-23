@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFavorites } from '../../context/FavoritesContext';
 import useDebounce from '../../useDebounce';
 import MovieCard from '../MovieCard';
@@ -13,9 +13,16 @@ const Home = () => {
   const {favoriteMovies, setFavoriteMovies} = useFavorites([]);
   const [searchValue, setSearchValue] = useState(''); 
 
-  const value = useDebounce(searchValue, 700);
+  const value = useDebounce(searchValue, 500);
 
   const { data } = useFetch(`https://www.omdbapi.com/?s=${value}&apikey=a165f90d`,value);
+
+  useEffect( () => {
+    const lastSearch = JSON.parse(
+      localStorage.getItem('lastSearch') 
+    );
+    setSearchValue(lastSearch);
+  }, []);
 
   const addMovieToFavorites = (movie) => {
     setFavoriteMovies([...favoriteMovies, movie]);
@@ -24,8 +31,9 @@ const Home = () => {
   const removeMovieFromFavorites = (movie) => {
     setFavoriteMovies(favoriteMovies.filter(
      (favourite) => favourite.imdbID !== movie.imdbID
-   ))
+   ));
    };
+
  
   return (
     <div className='home'>
