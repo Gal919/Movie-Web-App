@@ -1,5 +1,8 @@
-.movieinfo-container {
+.movieinfo {
     background: #232425;
+}
+
+.movieinfo-container {
     display: flex;
     flex-direction: row;
     padding: 50px 0px;

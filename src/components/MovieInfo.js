@@ -3,12 +3,13 @@ import { useLocation } from 'react-router-dom';
 import '../styles/MovieInfo.css'; 
 import noImage from '../images/noImage.png';
 import useFetch from '../useFetch';
+import Loading from './Loading';
 
 const MovieInfo = () => {
 
     const {state : { id }} = useLocation();
 
-    const { data } = useFetch(`https://www.omdbapi.com/?i=${id}&apikey=a165f90d`, id);
+    const { data, isLoading } = useFetch(`https://www.omdbapi.com/?i=${id}&apikey=a165f90d`, id);
 
     const getImage = (value) => {
       return value !== 'N/A'? value : noImage;
@@ -19,8 +20,9 @@ const MovieInfo = () => {
     };
   
     return (
-      <div>
-        {data && (
+      <div className='movieinfo'>
+      {isLoading ? <Loading /> : 
+        data && (
           <div className='movieinfo-container'>
             <img className='image-info' src={getImage(data?.data?.Poster)} alt='moviePoster' />
             <div className='info'>
@@ -55,6 +57,7 @@ const MovieInfo = () => {
             </div>
           </div>
         )}
+
       </div>
     );
 };

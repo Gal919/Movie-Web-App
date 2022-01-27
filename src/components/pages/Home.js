@@ -7,6 +7,7 @@ import AddToFavorites from '../AddToFavorites';
 import movie from '../../images/movie.png';
 import useFetch from '../../useFetch';
 import RemoveFromFavorites from '../RemoveFromFavorites';
+import Loading from '../Loading';
 
 const Home = () => {
   
@@ -15,13 +16,13 @@ const Home = () => {
 
   const value = useDebounce(searchValue, 500);
 
-  const { data } = useFetch(`https://www.omdbapi.com/?s=${value}&apikey=a165f90d`,value);
+  const {data, isLoading} = useFetch(`https://www.omdbapi.com/?s=${value}&apikey=a165f90d`,value);
 
   useEffect( () => {
     const lastSearch = JSON.parse(
       localStorage.getItem('lastSearch') 
     );
-    setSearchValue(lastSearch);
+    lastSearch ? setSearchValue(lastSearch) : setSearchValue('');  
   }, []);
 
   const addMovieToFavorites = (movie) => {
@@ -38,7 +39,8 @@ const Home = () => {
   return (
     <div className='home'>
       <SearchBar setSearchValue={setSearchValue} searchValue={searchValue} />
-      {data?.data?.Search?.length > 0 &&
+      {isLoading ? <Loading /> : 
+      data?.data?.Search?.length > 0 &&
         data?.data?.Search?.map((movie) => (
           <div key={movie.imdbID}>
             <MovieCard  data={movie} />
@@ -51,7 +53,7 @@ const Home = () => {
           </div>
         ))}
       <div className='image-container'>
-        <img className='backgroung-image' src={movie} alt='movie-poster' />
+        <img className='backgroung-image' src={movie} alt='movie' />
       </div>
     </div>
   );
