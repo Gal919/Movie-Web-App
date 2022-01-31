@@ -54,7 +54,7 @@ const Home = () => {
         ))}
       <div className='image-container'>
         <img className='backgroung-image' src={movie} alt='movie' />
-      </div>
+      </div> 
     </div>
   );
 };

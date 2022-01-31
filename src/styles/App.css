@@ -3,7 +3,10 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-   
+  }
+
+  html {
+    background-color: #232425
   }
 
   .home {
@@ -12,7 +15,7 @@
     justify-content: center;
     background-color: #232425;
     padding: 0 70px;
-   
+    
   }
 
   .image-container {

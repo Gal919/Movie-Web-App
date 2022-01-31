@@ -16,9 +16,6 @@ const Loading = () => {
 
     return <div>
         <Lottie options={defaultOptions} width={250} height={250} />
-        <div className='image-container'>
-        <img className='backgroung-image' src={movie} alt='movie' />
-      </div>
     </div>;
 }
 
