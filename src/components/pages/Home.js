@@ -4,7 +4,6 @@ import useDebounce from '../../useDebounce';
 import MovieCard from '../MovieCard';
 import SearchBar from '../SearchBar';
 import AddToFavorites from '../AddToFavorites';
-import movie from '../../images/movie.png';
 import useFetch from '../../useFetch';
 import RemoveFromFavorites from '../RemoveFromFavorites';
 import Loading from '../Loading';
@@ -49,12 +48,9 @@ const Home = () => {
               onAddMovie={addMovieToFavorites}
               data={movie}
              />}
-            
           </div>
         ))}
-      <div className='image-container'>
-        <img className='backgroung-image' src={movie} alt='movie' />
-      </div> 
+      
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { useFavorites } from '../../context/FavoritesContext';
 import '../../styles/Favorites.css';
 import MovieCard from '../MovieCard';
 import RemoveFromFavorites from '../RemoveFromFavorites';
-import movie from '../../images/movie.png';
 
 const Favorites = () => {
 
@@ -31,9 +30,6 @@ const Favorites = () => {
             </div>
           ))}
         </div>
-        <div className='image-container'>
-        <img className='backgroung-image' src={movie} alt='movie-poster' />
-      </div>
       </div>
     );
 };

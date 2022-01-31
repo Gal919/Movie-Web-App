@@ -1,6 +1,5 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import movie from '../images/movie.png';
 import loadingAnim from '../lottie/lf30_editor_5h9ao3ga.json';
 
 const Loading = () => {
