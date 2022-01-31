@@ -9,11 +9,11 @@
 
 .favorites-title {
     display: flex;
-    font-size: 12px;
+    font-size: 25px;
     color: white;
-    width: 100%;
     justify-content: center;
     margin-bottom: 20px;
+    text-decoration-line: underline;
 }
 
 .movies {
@@ -21,7 +21,6 @@
     flex-wrap: wrap;
     justify-content: center;
     flex-direction: row;
-    padding: 20px 100px;
 }
 
 .movie-image {
@@ -29,12 +28,12 @@
     height: 300px;
 }
 
-
-.favorite {
-    max-width: 220px;
-    margin: 10px;
-}
-
 .movie-title {
     margin-top: 5px;
 } 
+
+.no-movies {
+    font-size: 17px;
+    color: white;
+    padding-top: 70px;
+}

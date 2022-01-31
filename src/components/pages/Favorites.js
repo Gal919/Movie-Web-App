@@ -16,19 +16,19 @@ const Favorites = () => {
 
     return (
       <div className='favorites-container'>
-        <div className='favorites-title'>
-          <h1>Favorites</h1>
-        </div>
+       
+          <h1 className='favorites-title'>Favorites</h1>
+        
         <div className='movies'>
-          {favoriteMovies.map((movie) => (
+          {favoriteMovies.length > 0 ? favoriteMovies.map((movie) => (
             <div key={movie.imdbID}>
               <MovieCard data={movie} />
               <RemoveFromFavorites
                 onRemoveMovie={removeMovieFromFavorites}
                 data={movie}
               />
-            </div>
-          ))}
+            </div> 
+          )) : <h3 className='no-movies'>No movies to show</h3>}
         </div>
       </div>
     );
