@@ -3,7 +3,7 @@
 Movies info app. 
 Alows to search for a movie, see his info and add him to favorites list.
 
-https://unruffled-colden-0a2208.netlify.app
+https://gal-movie-app.netlify.app
 
 ## About the application
  **React SPA using external api and localStorage.
