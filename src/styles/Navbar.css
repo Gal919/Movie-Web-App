@@ -19,11 +19,14 @@
   max-width: 1500px;
 }
 
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .navbar-logo {
   font-weight: 600;
   color: #fff;
-  justify-self: start;
-  margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
@@ -82,16 +85,15 @@
   display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media only screen and (max-width: 768px) {
 
   .nav-menu {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
     height: 90vh;
     position: absolute;
     top: 80px;
-    right: -100%;
     opacity: 1;
     transition: all 0.5s ease;
     justify-content:right;
@@ -102,15 +104,16 @@
   .nav-menu.active {
     display: flex;
     background: #191A1B;
-    width: 70vh;
+    width: 80%;
     right: 0;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
     justify-content:right;
     padding-top: 80px;
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 17px;
   }
 
   .nav-links {
@@ -133,7 +136,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(25%, 50%);
+    transform: translate(10%, 150%);
+    font-size: 17px;
+  }
+
+  .fa-popcorn {
+    font-size: 17px;
   }
 
   .menu-icon {
@@ -141,14 +149,14 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    transform: translate(-100%, 90%);
+    font-size: 1.5rem;
     cursor: pointer;
   }
 
   .fa-times {
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
 }
