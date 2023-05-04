@@ -6,7 +6,7 @@ const useFetch = (url, value) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (value === undefined || value === "") return [];
+    if (value === undefined) return [];
     const getInfo = async () => {
       setIsLoading(true);
       try {
